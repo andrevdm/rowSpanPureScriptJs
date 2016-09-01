@@ -1,6 +1,6 @@
 module App.Demo where
 
-import Prelude (map, show, ($), (<>), (+), (*))
+import Prelude (map, show, ($), (<>), (+), (*), (<$>))
 import Pux.Html (Html, tbody, text, th, tr, thead, table, div, td)
 import Pux.Html.Attributes (attr)
 import App.Tables (collapseTableArray)
@@ -8,18 +8,28 @@ import Data.Array (concat, length)
 
 getTable :: forall a. Html a
 getTable =
-  let dates = [{year:2016, months:[{month:11, days:[{day:30}
-                                                   ,{day:10}
-                                                   ]}
-                                  ,{month:2, days:[{day:15}
-                                                  ,{day:3}
-                                                  ,{day:1}
-                                                  ]}
-                                  ]}
-              ,{year:2015, months:[{month:5, days:[{day:20}
-                                                  ,{day:17}
-                                                  ]}
-                                  ]}
+  let dates = [{year:2016
+               ,months:[{month:11
+                        ,days:[{day:30}
+                              ,{day:10}
+                              ]
+                        }
+                       ,{month:2
+                        ,days:[{day:15}
+                              ,{day:3}
+                              ,{day:1}
+                              ]
+                        }
+                       ]
+               }
+              ,{year:2015
+               ,months:[{month:5
+                        ,days:[{day:20}
+                              ,{day:17}
+                              ]
+                        }
+                       ]
+               }
               ] in
 
   let rowData = map
@@ -54,14 +64,14 @@ getTable =
           ]
        ,tbody
           []
-          (map buildRow c)
+          (buildRow <$> c)
        ]
     ]
   where
     buildRow r =
       tr
       []
-      (map buildCol r.cols)
+      (buildCol <$> r.cols)
 
     buildCol c =
       td
