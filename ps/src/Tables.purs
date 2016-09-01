@@ -22,6 +22,7 @@ collapseTableArray :: forall r c. Array (Row r c) -> Array (Row r c)
 collapseTableArray rows = 
   -- | To create the initial collapse array, we need to know the number of cols in a row
   -- | Get the number of cols in each row and then  get the minimum value
+  -- | PureScript being safe ensures that the empty list case is handled
   case minimum $ (\r -> length r.cols) <$> rows of
     Just m ->
       -- | Initial collapse array of zeros
@@ -36,12 +37,18 @@ collapseTableArray rows =
     collapseRow :: forall rr cc ss. (CollapseState rr cc ss) -> Row rr cc -> (CollapseState rr cc ss)
     collapseRow state row =
       -- | Zip the previous collapse array and the current cols array
+      -- | This results in an array of [collapse, col]
       let skipCols = zip state.collapse row.cols in
       -- | Get all cols where the collapse value is less than 1
+      -- | First the list is filtered by checking the collapse value (fst in array)
+      -- | Then snd is called (fmapped over) each itemm to get only the column
+      -- | Note that this results in the selected columns being unaltered and all additional information (fields)
+      -- |  in the columns being retained
       let nextCols = snd <$> filter (\t -> fst t <= 0) skipCols in
       -- | If current collapse is zero then next skip is the span value - 1 else its collapse - 1
       let nextSkip = map (\t -> if fst t == 0 then (snd t).span - 1 else (fst t) - 1) skipCols in
-      -- | Construct the row, change the cols
+      -- | Construct the row, change only the cols
+      -- | Again, note that the other fields in the row are returned unaltered
       let resRow = row { cols = nextCols } in
       -- | Next state
       state {collapse = nextSkip, st = snoc state.st resRow }
