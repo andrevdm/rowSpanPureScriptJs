@@ -1,0 +1,31 @@
+body {
+    font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Grande', 'Helvetica Neue', sans-serif;
+    text-rendering: optimizeLegibility;
+    font-size: 14px;
+    letter-spacing: .2px;
+    text-size-adjust: 100
+}
+table
+{
+    margin: 2px;
+    border-collapse: collapse;
+    background-color:#eaeaea;
+    width: 100%;
+}
+td
+{
+    margin: 0px;
+    padding: 5px;
+    border-width: 1px;
+    border: 1px #999999 solid;
+    background-color:#eaeaea;
+    valign: top;
+}
+th
+{
+    margin: 0px;
+    padding: 5px;
+    border-width: 1px;
+    border: 1px #999999 solid;
+    background-color: #B4CBCD;
+}
