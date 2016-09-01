@@ -1,0 +1,27 @@
+name:                rowSpan
+version:             0.1.0.0
+synopsis:            rowSpan example in haskell
+description:         Please see README.md
+homepage:            https://github.com/andrevdm/rowSpanPureScriptJs
+license:             BSD3
+author:              Andre Van Der Merwe
+maintainer:          andre@andrevdm.com
+copyright:           2016 Andre Van Der Merwe
+category:            Test
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+executable rowSpan-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , protolude
+                     , text
+  default-language:    Haskell2010
+
+
+source-repository head
+  type:     git
+  location: https://github.com/andrevdm/rowSpanPureScriptJs

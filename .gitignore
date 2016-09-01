@@ -4,3 +4,4 @@ ps/node_modules/
 ps/output/
 ps/.psci_modules
 ps/.pulp-cache
+hs/.stack-work
