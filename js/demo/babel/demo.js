@@ -17,25 +17,25 @@ const mainReducer = (state = {}, action) => {
                                 days:[{day:30},
                                       {day:10}
                                      ]
+                               },
+                               {month:2,
+                                days:[{day:15},
+                                      {day:3},
+                                      {day:1}
+                                     ]
                                }
-                               ,{month:2,
-                                 days:[{day:15},
-                                       {day:3},
-                                       {day:1}
-                                      ]
-                                }
+                              ]
+                      },
+                      {year:2015,
+                       months:[{month:5,
+                                days:[{day:20},
+                                      {day:17}
+                                     ]
+                               }
                               ]
                       }
-                      ,{year:2015,
-                        months:[{month:5,
-                                 days:[{day:20},
-                                       {day:17}
-                                      ]
-                                }
-                               ]
-                       }
                      ];
-
+        
         dispatchUpdateData( action.store, data );
       },
       10 );
