@@ -1,6 +1,1 @@
-JS
-  js/setupBabel.sh
-  install babel dependencies. You may need to run as root
-
-PS
-  https://github.com/alexmingoia/pux-starter-app
+http://www.andrevdm.com/posts/2016-09-01-rowSpan-pux-redux.html
